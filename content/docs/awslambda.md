@@ -36,7 +36,7 @@ directive. For example, given a directive `awslambda /lambda/`, a request to `/l
 would invoke the AWS Lambda function named `hello-world`.
 
 The `include` and `exclude` globs are simple wildcards, not regular expressions.
-For example, `include foo*` would match `food` and `footer` but not `bafoon`, while
+For example, `include foo*` would match `food` and `footer` but not `buffoon`, while
 `include *foo*` would match all three.
 
 If you adopt a simple naming convention for your Lambda functions, these rules can be used to
