@@ -2,6 +2,8 @@
 title: awslambda
 type: docs
 directive: true
+plugin: true
+link: https://github.com/coopernurse/caddy-awslambda
 ---
 
 awslambda proxies requests to AWS Lambda functions using the
