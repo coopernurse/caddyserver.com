@@ -24,6 +24,8 @@ the Lambda functions to conform to the response JSON envelope format.
     <span class="hl-subdirective">qualifier</span>     <i>qualifier value</i>
     <span class="hl-subdirective">include</span>       <i>included function names...</i>
     <span class="hl-subdirective">exclude</span>       <i>excluded function names...</i>
+    <span class="hl-subdirective">name_prepend</span>  <i>string to prepend to function name</i>
+    <span class="hl-subdirective">name_append</span>   <i>string to append to function name</i>
 }</code>
 
 *   **aws_access** is the AWS Access Key to use when invoking Lambda functions. If omitted, the AWS_ACCESS_KEY_ID env var is used.
@@ -32,6 +34,8 @@ the Lambda functions to conform to the response JSON envelope format.
 *   **qualifier** is the qualifier value to use when invoking Lambda functions. Typically this is set to a function version or alias name. If omitted, no qualifier will be passed on the AWS Invoke invocation.
 *   **include** is an optional space separated list of function names to include. Prefix and suffix globs ('*') are supported. If omitted, any function name not excluded may be invoked.
 *   **exclude** is an optional space separated list of function names to exclude. Prefix and suffix globs are supported.
+*   **name_prepend** is an optional string to prepend to the function name parsed from the URL before invoking the Lambda.
+*   **name_append** is an optional string to append to the function name parsed from the URL before invoking the Lambda.
 
 Function names are parsed from the portion of request path following the path-prefix in the
 directive. For example, given a directive `awslambda /lambda/`, a request to `/lambda/hello-world`
@@ -41,8 +45,15 @@ The `include` and `exclude` globs are simple wildcards, not regular expressions.
 For example, `include foo*` would match `food` and `footer` but not `buffoon`, while
 `include *foo*` would match all three.
 
+`include` and `exclude` rules are run before `name_prepend` and `name_append` are applied.
+
 If you adopt a simple naming convention for your Lambda functions, these rules can be used to
 group access to a set of Lambdas under a single URL path prefix.
+
+`name_prepend` and `name_append` allow for shorter names in URLs and works well with tools such
+as Apex, which prepend the project name to all Lambda functions. For example, given an URL path
+of `/api/foo` with a `name_prepend` of `acme-api-`, the plugin will try to invoke the function
+named `acme-api-foo`.
 
 ### Writing Lambdas
 
