@@ -18,16 +18,16 @@ the Lambda functions to conform to the response JSON envelope format.
 ### Syntax
 
 <code class="block"><span class="hl-directive">awslambda</span> <span class="hl-arg"><i>path-prefix</i></span> {
-    <span class="hl-subdirective">aws_access</span>    <i>aws access key value</i>
-    <span class="hl-subdirective">aws_secret</span>    <i>aws secret key value</i>
-    <span class="hl-subdirective">aws_region</span>    <i>aws region name</i>
-    <span class="hl-subdirective">qualifier</span>     <i>qualifier value</i>
-    <span class="hl-subdirective">include</span>       <i>included function names...</i>
-    <span class="hl-subdirective">exclude</span>       <i>excluded function names...</i>
-    <span class="hl-subdirective">name_prepend</span>  <i>string to prepend to function name</i>
-    <span class="hl-subdirective">name_append</span>   <i>string to append to function name</i>
-    <span class="hl-subdirective">single</span>   <i>name of a single lambda function to invoke</i>
-    <span class="hl-subdirective">strip_path_prefix</span>   <i>If true, path and function name are stripped from the path</i>
+    <span class="hl-subdirective">aws_access</span>         <i>aws access key value</i>
+    <span class="hl-subdirective">aws_secret</span>         <i>aws secret key value</i>
+    <span class="hl-subdirective">aws_region</span>         <i>aws region name</i>
+    <span class="hl-subdirective">qualifier</span>          <i>qualifier value</i>
+    <span class="hl-subdirective">include</span>            <i>included function names...</i>
+    <span class="hl-subdirective">exclude</span>            <i>excluded function names...</i>
+    <span class="hl-subdirective">name_prepend</span>       <i>string to prepend to function name</i>
+    <span class="hl-subdirective">name_append</span>        <i>string to append to function name</i>
+    <span class="hl-subdirective">single</span>             <i>name of a single lambda function to invoke</i>
+    <span class="hl-subdirective">strip_path_prefix</span>  <i>If true, path and function name are stripped from the path</i>
 }</code>
 
 *   **aws_access** is the AWS Access Key to use when invoking Lambda functions. If omitted, the AWS_ACCESS_KEY_ID env var is used.
@@ -51,7 +51,7 @@ The `include` and `exclude` globs are simple wildcards, not regular expressions.
 For example, `include foo*` would match `food` and `footer` but not `buffoon`, while
 `include *foo*` would match all three.
 
-`include and `exclude` rules are run before `name_prepend` and `name_append` are applied and
+`include` and `exclude` rules are run before `name_prepend` and `name_append` are applied and
 are run against the parsed function name, not the entire URL path.
 
 If you adopt a simple naming convention for your Lambda functions, these rules can be used to
